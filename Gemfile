@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql2'
 
 
@@ -21,15 +17,23 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'inherited_resources'
 
 group :development do
   gem 'guard'
   gem 'guard-pow'
   gem 'guard-rspec'
   gem 'guard-bundler'
+  gem 'rb-fsevent'
+  gem 'growl'
+end
+
+group :test do
+  gem 'sqlite3'
 end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'marked'
 end
