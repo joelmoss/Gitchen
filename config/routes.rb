@@ -6,6 +6,6 @@ Gitchen::Application.routes.draw do
   delete 'sign_out', :to => 'sessions#destroy', :as => :sign_out
 
 
-  root :to => "dashboard#index"
+  root :to => "dashboards#index"
 
 end
