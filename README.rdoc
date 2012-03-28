@@ -12,13 +12,60 @@ Sign in to your Gitchen, and you're sorted!
 Gitchen, is the best and only place to browse, manage, and search your list of watched
 Github repos.
 
- - Search by title, description or owner.
+  - Search by:
+    - title
+    - description
+    - language
+    - owner
 
- - Browse by:
-   - language
-   - watchers
-   - forks
+  - Browse by:
+    - language
+    - user
+    - forks
 
- - Additional features:
-   - Tag a repo
-   - Add notes to repo
+  - Sort by:
+    - watchers
+    - forks
+    - issues
+    - size
+    - owner's followers
+
+  - Additional features:
+    - Add tags
+    - Add notes or modify (overwrite) description
+
+
+=== Popularity/Rating/Score
+
+Each repo (and possible each user) is given a score based on his repo's stats forks,
+watchers and issues.
+
+
+=== Process
+
+  - Sign up
+    - fetch users watched repos [GET /users/:user/watched]
+
+  - Sign in
+    - update users watched repos (max once every 24 hours) [GET /users/:user/watched]
+
+  - On every signed in request
+    - update users watched repos (max once every 24 hours) [GET /users/:user/watched]
+
+
+
+=== Utilities/Tools
+
+  - Prune watched repos
+    - stop watching repos not updated since x days/weeks/months
+    - stop watching repos not pushed to since x days/weeks/months
+    - stop watching repos with less than x watchers
+    - stop watching repos with less than x forks
+    - stop watching repos with language x
+    - stop watching private/public repos
+    - stop watching forks
+
+  Start watching
+    - repos that hit x watchers
+    - repos that hit x forks
+    - repos that get mentioned on changelog
