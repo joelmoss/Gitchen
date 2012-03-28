@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.2)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.2.7)
     arel (3.0.2)
     builder (3.0.0)
     coffee-rails (3.2.2)
@@ -47,6 +48,11 @@ GEM
     factory_girl_rails (3.0.0)
       factory_girl (~> 3.0.0)
       railties (>= 3.0.0)
+    fakeweb (1.3.0)
+    faraday (0.7.6)
+      addressable (~> 2.2)
+      multipart-post (~> 1.1)
+      rack (~> 1.1)
     ffi (1.0.11)
     growl (1.0.3)
     guard (1.0.1)
@@ -60,6 +66,7 @@ GEM
     guard-rspec (0.7.0)
       guard (>= 0.10.0)
     has_scope (0.5.1)
+    hashie (1.2.0)
     hike (1.2.1)
     i18n (0.6.0)
     inherited_resources (1.3.1)
@@ -84,8 +91,21 @@ GEM
     marked (1.2.2)
     mime-types (1.18)
     multi_json (1.2.0)
+    multipart-post (1.1.5)
     mysql2 (0.3.11)
+    oauth2 (0.5.2)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
     oj (1.1.1)
+    omniauth (1.0.3)
+      hashie (~> 1.2)
+      rack
+    omniauth-github (1.0.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
+    omniauth-oauth2 (1.0.0)
+      oauth2 (~> 0.5.0)
+      omniauth (~> 1.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -153,6 +173,7 @@ GEM
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    vcr (2.0.0)
 
 PLATFORMS
   ruby
@@ -160,16 +181,19 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails
+  fakeweb
   growl
   guard
   guard-bundler
   guard-pow
   guard-rspec
+  hashie
   inherited_resources
   jquery-rails
   marked
   mysql2
   oj
+  omniauth-github
   rails (= 3.2.2)
   rb-fsevent
   rspec-rails
@@ -177,3 +201,4 @@ DEPENDENCIES
   sqlite3
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  vcr

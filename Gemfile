@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 gem 'mysql2'
 gem 'oj'
+gem 'omniauth-github'
+gem 'hashie'
 
 
 # Gems used only for assets and not required
@@ -32,6 +34,8 @@ end
 
 group :test do
   gem 'sqlite3'
+  gem 'vcr'
+  gem 'fakeweb'
 end
 
 group :development, :test do

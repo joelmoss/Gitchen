@@ -1,0 +1,1 @@
+Gitchen::Config.configure :from_file => Rails.root.join('config', 'gitchen.yml')
