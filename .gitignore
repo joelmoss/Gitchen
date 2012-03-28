@@ -17,3 +17,4 @@
 /config/database.yml
 
 /.tm_properties
+/config/gitchen.yml

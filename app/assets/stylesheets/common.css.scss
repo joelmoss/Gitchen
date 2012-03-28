@@ -1,5 +1,35 @@
+/* Utilities
+/* ---------------------------------------------------------------------------- */
+
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+
+
+/* Layout
+/* ---------------------------------------------------------------------------- */
+
 body {
   background: #DDD image-url('layout/dark_wood.png') repeat scroll top left;
+}
+
+footer {
+  border-top: 1px dashed #333;
+  color: #666;
+  margin-top: 65px;
+  font-size: 11px;
+  padding-top: 10px;
+
+  a {
+    color: #888;
+    &:hover {
+      color: #CCC;
+      text-decoration: none;
+    }
+  }
 }
 
 .navbar {
