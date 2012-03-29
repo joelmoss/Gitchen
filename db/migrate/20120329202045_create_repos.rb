@@ -1,0 +1,13 @@
+class CreateRepos < ActiveRecord::Migration
+  def change
+    create_table :repos do |t|
+      t.string :name, :language
+      t.text :description
+      t.boolean :fork, :private
+      t.integer :watchers_count, :size
+      t.references :owner
+      t.datetime :pushed_at
+      t.timestamps
+    end
+  end
+end

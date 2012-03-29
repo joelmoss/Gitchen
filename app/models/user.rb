@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  has_many :watches
+  has_many :watchings, :through => :watches, :class_name => "Repo"
+
   # The github data will be serialzed as a Hash.
   serialize :github_data
 
