@@ -4,13 +4,13 @@ describe "Authentication" do
 
   context "on successful sign in" do
     before(:each) do
-      OmniAuth.config.mock_auth[:github] = { credentials: { token: "somerandomtoken" },
+      OmniAuth.config.mock_auth[:github] = { credentials: { token: "somerandomstring" },
                                              extra: {
                                              raw_info: {
                                              login: "joelmoss" } } }
     end
 
-    it "should create a new User record", :vcr => { :cassette_name => 'watched' } do
+    it "should create a new User record" do
       get "/auth/github"
       follow_redirect!
 
@@ -22,7 +22,7 @@ describe "Authentication" do
       it "should use the existing record" do
         user = build_stubbed(:user)
         OmniAuth.config.mock_auth[:github][:extra][:raw_info][:login] = user.username
-        attrs = { github_data: {login: user.username}, github_access_token: "somerandomtoken" }
+        attrs = { github_data: {login: user.username}, github_access_token: "somerandomstring" }
         User.should_receive(:find_or_create_by_username).with(user.username, attrs).and_return(user)
 
         get "/auth/github"

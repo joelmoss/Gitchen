@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # Delegate github attributes to #github_data.
   delegate :avatar_url, :html_url, :to => :github_data
 
-  after_create :fetch_watched_repos
+  after_create proc {|user| HardWorker.perform_async user.id }
 
 
   def to_s
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   def github
     @github ||= begin
       if username.present? && github_access_token.present?
-        Octokit::Client.new(:login => username, :oauth_token => github_access_token)
+        Octokit::Client.new(login: username, oauth_token: github_access_token, auto_traversal: true)
       else
         nil
       end
@@ -39,11 +39,8 @@ class User < ActiveRecord::Base
     !github.nil?
   end
 
-
-  private
-
-    def fetch_watched_repos
-      github.watched
-    end
+  def fetch_watched_repos
+    github.watched
+  end
 
 end

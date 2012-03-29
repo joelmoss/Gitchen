@@ -22,8 +22,8 @@ def stub_delete(url)
   stub_request(:delete, github_url(url))
 end
 
-def stub_get(url)
-  stub_request(:get, github_url(url))
+def stub_get(url, oauth_token = nil)
+  stub_request(:get, github_url(url, oauth_token))
 end
 
 def stub_patch(url)
@@ -46,9 +46,9 @@ def fixture(file)
   File.new(fixture_path + '/' + file + '.json')
 end
 
-def github_url(url)
-  if @client && @client.oauthed?
-    "https://api.github.com#{url}?access_token=#{@client.oauth_token}"
+def github_url(url, oauth_token = nil)
+  if oauth_token
+    "https://api.github.com#{url}?access_token=#{oauth_token}"
   else
     "https://api.github.com#{url}"
   end
