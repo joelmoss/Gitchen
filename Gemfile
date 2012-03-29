@@ -7,6 +7,10 @@ gem 'omniauth-github'
 gem 'hashie'
 gem 'octokit'
 
+gem 'sidekiq'
+gem 'slim'
+gem 'sinatra'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,11 +41,11 @@ group :test do
   gem 'sqlite3'
   gem 'vcr'
   gem 'webmock'
-  gem 'ffaker'
 end
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'ffaker'
   gem 'marked'
 end

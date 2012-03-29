@@ -8,4 +8,7 @@ Gitchen::Application.routes.draw do
 
   root :to => "dashboards#index"
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
 end
