@@ -5,6 +5,7 @@ gem 'mysql2'
 gem 'oj'
 gem 'omniauth-github'
 gem 'hashie'
+gem 'octokit'
 
 
 # Gems used only for assets and not required
@@ -35,7 +36,8 @@ end
 group :test do
   gem 'sqlite3'
   gem 'vcr'
-  gem 'fakeweb'
+  gem 'webmock'
+  gem 'ffaker'
 end
 
 group :development, :test do

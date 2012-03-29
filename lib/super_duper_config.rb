@@ -11,7 +11,7 @@ module SuperDuperConfig
 
   def from_file!(file)
     if File.file?(file)
-      YAML.load(ERB.new(File.new(file).read).result)[Rails.env].each do |k,v|
+      (YAML.load(ERB.new(File.new(file).read).result)[Rails.env] || {}).each do |k,v|
         configuration[k] = v
       end
     end

@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  # describe "after creation, fetch the watched repos list" do
+  #   it "should call the Github API", :vcr do
+  #     create(:user)
+  #   end
+  # end
+
 end
