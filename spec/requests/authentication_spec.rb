@@ -11,6 +11,8 @@ describe "Authentication" do
     end
 
     it "should create a new User record" do
+      HardWorker.should_receive(:perform_async)
+
       get "/auth/github"
       follow_redirect!
 

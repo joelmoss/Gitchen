@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :watches
   has_many :watchings, :through => :watches, :class_name => "Repo"
+  has_many :repos, :foreign_key => "user_id"
 
   # The github data will be serialzed as a Hash.
   serialize :github_data
@@ -9,7 +10,7 @@ class User < ActiveRecord::Base
   # Delegate github attributes to #github_data.
   delegate :avatar_url, :html_url, :to => :github_data
 
-  after_create proc {|user| HardWorker.perform_async user.id }
+  after_create proc {|user| HardWorker.perform_async user.id }, :if => :github_access_token
 
 
   def to_s
@@ -42,8 +43,18 @@ class User < ActiveRecord::Base
     !github.nil?
   end
 
+  # Fetch all watched repos for this user, and create a Repo record for each one,
+  # along with a User record for the owner, and of course the association between
+  # Repo and watcher.
   def fetch_watched_repos
-    github.watched
+    github.watched.each do |wr|
+      attrs = wr.slice(:name, :language, :description, :fork, :private, :size,
+                               :pushed_at, :created_at, :updated_at)
+      repo = Repo.find_or_create_by_id(wr.id, attrs.merge({:watchers_count => wr.watchers}))
+      repo.owner = User.find_or_create_by_username(wr.owner.login)
+      repo.save
+      watchings << repo
+    end
   end
 
 end

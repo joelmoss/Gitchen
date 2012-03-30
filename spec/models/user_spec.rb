@@ -10,9 +10,17 @@ describe User do
   end
 
   describe "#fetch_watched_repos" do
-    it "should fetch the users watched repos from Github" do
+    before(:each) do
+      HardWorker.should_receive(:perform_async).with(user.id)
+    end
+
+    let(:user) { create(:user) }
+
+    it "should fetch the user's watched repos from Github" do
       stub_get('/users/joelmoss/watched', 'somerandomstring').to_return(:body => fixture("watched"))
-      mark create(:user).fetch_watched_repos.size
+      user.fetch_watched_repos
+      Watch.count.should == 30
+      user.watchings.count == 30
     end
   end
 

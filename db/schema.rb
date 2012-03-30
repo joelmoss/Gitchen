@@ -19,20 +19,21 @@ ActiveRecord::Schema.define(:version => 20120329205221) do
     t.text     "description"
     t.boolean  "fork"
     t.boolean  "private"
-    t.integer  "watchers_count"
-    t.integer  "size"
+    t.integer  "watchers_count", :default => 0
+    t.integer  "size",           :default => 0
     t.integer  "owner_id"
     t.datetime "pushed_at"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "github_access_token"
     t.text     "github_data"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.integer  "watchings_count",     :default => 0
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
