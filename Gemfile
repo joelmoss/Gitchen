@@ -6,6 +6,7 @@ gem 'oj'
 gem 'omniauth-github'
 gem 'hashie'
 gem 'octokit'
+gem 'kaminari'
 
 gem 'sidekiq'
 gem 'slim'

@@ -26,6 +26,7 @@ describe "Authentication" do
         OmniAuth.config.mock_auth[:github][:extra][:raw_info][:login] = user.username
         attrs = { github_data: {login: user.username}, github_access_token: "somerandomstring" }
         User.should_receive(:find_or_create_by_username).with(user.username, attrs).and_return(user)
+        user.should_receive(:update_attributes)
 
         get "/auth/github"
         follow_redirect!

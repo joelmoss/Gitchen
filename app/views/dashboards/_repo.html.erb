@@ -1,0 +1,13 @@
+<tr>
+  <td class="line-height6"><nobr>
+    <span class="badge">
+      <i class="icon-eye-<%= repo.private? ? 'close' : 'open' %> icon-white"></i>
+      <%= repo.watchers.size %>
+    </span>
+  </nobr></td>
+  <td>
+    <h3><%= repo.owner %> / <%= repo %></h3>
+    <p class="muted"><%= repo.description %></p>
+  </td>
+  <td class="muted"><h6 class="line-height6"><%= repo.language %></h6></td>
+</tr>

@@ -1,1 +1,13 @@
-hello
+<div class="well">
+
+  <%= paginate @repos %>
+
+  <table class="table table-striped">
+    <tbody>
+      <%= render partial: 'dashboards/repo', collection: @repos %>
+    </tbody>
+  </table>
+
+  <%= paginate @repos %>
+
+</div>

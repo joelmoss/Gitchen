@@ -1,10 +1,13 @@
+@import 'libs/spacing';
+
+
 /* Utilities
 /* ---------------------------------------------------------------------------- */
 
-.right {
+.table th.right, .table td.right, .right {
   text-align: right;
 }
-.left {
+.table th.left, .table td.left, .left {
   text-align: left;
 }
 
