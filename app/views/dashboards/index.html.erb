@@ -1,18 +1,30 @@
 
 <% if signed_in? %>
 
-  <div class="well">
+  <% if @repos.empty? %>
 
-    <%= paginate @repos %>
+    <div class="alert alert-info">
+      <h4 class="alert-heading">Fetching your watched repos...</h4>
+      Please wait a few seconds, and they should start to appear below.
+    </div>
+    <div id="loading"></div>
 
-    <table class="table table-striped">
-      <tbody>
-        <%= render partial: 'dashboards/repo', collection: @repos %>
-      </tbody>
-    </table>
+  <% else %>
 
-    <%= paginate @repos %>
+    <div class="well">
 
-  </div>
+      <%= paginate @repos %>
+
+      <table class="table table-striped">
+        <tbody>
+          <%= render partial: 'dashboards/repo', collection: @repos %>
+        </tbody>
+      </table>
+
+      <%= paginate @repos %>
+
+    </div>
+
+  <% end %>
 
 <% end %>

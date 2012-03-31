@@ -53,6 +53,8 @@ class User < ActiveRecord::Base
   # along with a User record for the owner, and of course the association between
   # Repo and watcher.
   def fetch_watched_repos
+    toggle! :fetching_repos
+
     github.watched.each do |wr|
       attrs = wr.slice(:name, :language, :description, :fork, :private, :size, :forks,
                               :open_issues, :pushed_at, :created_at, :updated_at)
@@ -61,6 +63,8 @@ class User < ActiveRecord::Base
       repo.save
       watchings << repo
     end
+
+    toggle! :fetching_repos
   end
 
 end
