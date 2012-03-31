@@ -10,11 +10,17 @@ class User < ActiveRecord::Base
   # Delegate github attributes to #github_data.
   delegate :avatar_url, :html_url, :to => :github_data
 
-  after_create proc {|user| HardWorker.perform_async user.id }, :if => :github_access_token
-
 
   def to_s
     username
+  end
+
+  # Override that fetches watched repos after completion.
+  def self.find_or_create_by_username(username, *attrs)
+    if me = super
+      HardWorker.perform_async(me.id) if me.github_access_token
+    end
+    me
   end
 
   # Convert the github data into a Hashie::Mash object, so that delegation works.

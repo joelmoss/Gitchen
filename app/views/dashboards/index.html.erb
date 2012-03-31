@@ -1,13 +1,18 @@
-<div class="well">
 
-  <%= paginate @repos %>
+<% if signed_in? %>
 
-  <table class="table table-striped">
-    <tbody>
-      <%= render partial: 'dashboards/repo', collection: @repos %>
-    </tbody>
-  </table>
+  <div class="well">
 
-  <%= paginate @repos %>
+    <%= paginate @repos %>
 
-</div>
+    <table class="table table-striped">
+      <tbody>
+        <%= render partial: 'dashboards/repo', collection: @repos %>
+      </tbody>
+    </table>
+
+    <%= paginate @repos %>
+
+  </div>
+
+<% end %>
