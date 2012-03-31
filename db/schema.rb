@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20120329205221) do
     t.boolean  "private"
     t.integer  "watchers_count", :default => 0
     t.integer  "size",           :default => 0
+    t.integer  "forks",          :default => 0
+    t.integer  "open_issues",    :default => 0
     t.integer  "owner_id"
     t.datetime "pushed_at"
     t.datetime "created_at",                    :null => false
