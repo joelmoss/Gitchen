@@ -8,7 +8,8 @@ class LanguagesController < ApplicationController
   end
   
   def show
-    @repos = current_user.watchings.where(language: params[:id]).page(params[:page]).includes(:owner)
+    language = params[:id] == 'other' ? nil : params[:id]
+    @repos = current_user.watchings.where(language: language).page(params[:page]).includes(:owner)
   end
 
 end
