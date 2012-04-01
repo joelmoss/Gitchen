@@ -1,0 +1,20 @@
+<div class="well">
+
+  <%- @repos.each_with_index do |(group,repos),i| -%>
+
+  <div class="row">
+    <div class="span4">
+
+      <table class="table table-striped">
+        <tbody>
+          <%= render partial: 'repo', collection: repos %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <%- end -%>
+  
+</div>
+

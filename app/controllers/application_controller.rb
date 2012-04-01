@@ -1,15 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
-  helper_method :current_user
-  helper_method :signed_in?
-  
+
+  helper_method :current_user, :signed_in?
+  before_filter :fetch_languages, if: :signed_in?
+
 
   private
-  
+
+    def fetch_languages
+      @languages = current_user.watchings.language_list
+    end
+
     def current_user
       return nil unless session[:user_id]
-      
+
       begin
         @current_user ||= User.find(session[:user_id])
       rescue ActiveRecord::RecordNotFound

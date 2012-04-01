@@ -34,6 +34,7 @@ group :development do
   gem 'guard-pow'
   gem 'guard-rspec'
   gem 'guard-bundler'
+  gem 'guard-puma'
   gem 'rb-fsevent'
   gem 'growl'
 end

@@ -35,8 +35,17 @@
           <div class="nav-collapse">
             <ul class="nav">
               <% if signed_in? %>
-                <li><%= link_to "BROWSE:", "/path1" %></li>
-                <li><%= link_to "LANGUAGES", "/path2" %></li>
+                <li><%= link_to "BROWSE:", root_path %></li>
+                <li class="dropdown<%= ' active' if controller_name == 'languages' %>">
+                  <%= link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown" } do %>
+                    LANGUAGES<b class="caret"></b>
+                  <%- end -%>
+                  <ul class="dropdown-menu">
+                    <%- @languages.each do |language| -%>
+                      <li class="<%= 'active' if language.language == params[:id] %>"><%= link_to "#{language.language.try(:capitalize) || 'Other'} (#{language.repos})", language_path(language.language || :other) %></li>
+                    <%- end -%>
+                  </ul>
+                </li>
                 <li><%= link_to "WATCHERS", "/path3" %></li>
                 <li><%= link_to "FORKS", "/path3" %></li>
               <% else %>
