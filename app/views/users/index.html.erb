@@ -1,0 +1,33 @@
+<%- title 'Users' -%>
+<%- subtitle 'the owners of the repos you are watching' -%>
+
+<div class="well">
+
+  <%= render 'kaminari/page_entries_info', :collection => @users, :entry_name => "user" -%>
+
+  <table class="table table-striped">
+    <tbody>
+
+      <%- @users.each do |user| -%>
+
+      <tr>
+        <td>
+          <h3><%= link_to user.username, user_path(user.username) %></h3>
+        </td>
+        <td class="line-height6 right"><nobr>
+          <span class="badge">
+            <i class="icon-eye-open icon-white"></i>
+            <%= pluralize user.repos, 'repo' %>
+          </span>
+        </nobr></td>
+      </tr>
+
+      <%- end -%>
+
+    </tbody>
+  </table>
+
+  <%= render 'kaminari/page_entries_info', :collection => @users, :entry_name => "user" -%>
+
+</div>
+

@@ -10,9 +10,11 @@
 
   <% else %>
 
+    <%- title 'You are watching...' -%>
+
     <div class="well">
 
-      <%= paginate @repos %>
+      <%= render 'kaminari/page_entries_info', :collection => @repos %>
 
       <table class="table table-striped">
         <tbody>
@@ -20,7 +22,7 @@
         </tbody>
       </table>
 
-      <%= paginate @repos %>
+      <%= render 'kaminari/page_entries_info', :collection => @repos %>
 
     </div>
 

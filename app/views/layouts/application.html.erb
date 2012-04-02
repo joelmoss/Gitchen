@@ -46,8 +46,7 @@
                     <%- end -%>
                   </ul>
                 </li>
-                <li><%= link_to "WATCHERS", "/path3" %></li>
-                <li><%= link_to "FORKS", "/path3" %></li>
+                <li><%= link_to "USERS", users_path %></li>
               <% else %>
                 <li><%= link_to 'SIGN IN...', sign_in_path %></li>
               <% end %>
@@ -66,6 +65,15 @@
 
     <div class="container">
       <div class="content">
+        <div class="page-header">
+          <h1>
+            <%= @title_for_content if show_title? %>
+            <%- if show_subtitle? -%>
+              <small>&nbsp;&nbsp;<%= @subtitle_for_content %></small>
+            <%- end -%>
+          </h1>
+        </div>
+        
         <%= yield %>
       </div><!--/content-->
 

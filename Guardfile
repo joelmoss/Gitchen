@@ -34,8 +34,3 @@ guard 'rspec', :version => 2 do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
-
-guard 'puma' do
-  watch('Gemfile.lock')
-  watch(%r{^config|lib/.*})
-end
