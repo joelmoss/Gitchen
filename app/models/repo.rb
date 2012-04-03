@@ -2,7 +2,7 @@ class Repo < ActiveRecord::Base
 
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name "gitchen-#{Rails.env[0..2]}"
+  index_name BONSAI_INDEX_NAME
 
   mapping do
     indexes :name, as: 'name.gsub(/_/, " ")'
