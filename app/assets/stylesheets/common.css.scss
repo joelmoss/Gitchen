@@ -16,6 +16,20 @@
   height: 150px;
 }
 
+#user_display_bar {
+  img {
+    border: 4px solid #666;
+    margin-left: 8px;
+  }
+  color: #CCC;
+  font-size: 11px;
+  span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
 
 /* Layout
 /* ---------------------------------------------------------------------------- */

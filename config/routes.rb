@@ -8,7 +8,7 @@ Gitchen::Application.routes.draw do
   resources :repos, only: [ :index, :show, :edit ]
   resources :languages, :users, :searches, only: [ :index, :show ]
 
-  root to: "dashboards#index"
+  root to: "repos#index"
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

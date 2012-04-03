@@ -35,17 +35,7 @@
           <div class="nav-collapse">
             <ul class="nav">
               <% if signed_in? %>
-                <li><%= link_to "BROWSE:", root_path %></li>
-                <!-- <li class="dropdown">
-                  <%= link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown" } do %>
-                    LANGUAGES<b class="caret"></b>
-                  <%- end -%>
-                  <ul class="dropdown-menu">
-                    <%- languages.each do |language| -%>
-                      <li class="<%= 'active' if language.language == params[:id] %>"><%= link_to "#{language.language.try(:capitalize) || 'Other'} (#{language.repos})", language_path(language.language || :other) %></li>
-                    <%- end -%>
-                  </ul>
-                </li> -->
+                <li class="<%= 'active' if controller_name == 'repos' %>"><%= link_to "REPOS", repos_path %></li>
                 <li class="<%= 'active' if controller_name == 'languages' %>"><%= link_to "LANGUAGES", languages_path %></li>
                 <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to "USERS", users_path %></li>
               <% else %>
@@ -67,14 +57,28 @@
     <div class="container">
       <div class="content">
         <div class="page-header">
-          <h1>
-            <%= @title_for_content if show_title? %>
-            <%- if show_subtitle? -%>
-              <small>&nbsp;&nbsp;<%= @subtitle_for_content %></small>
-            <%- end -%>
-          </h1>
+          <div class="row">
+            <div class="span10">
+              <h1>
+                <%= @title_for_content if show_title? %>
+                <%- if show_subtitle? -%>
+                  <small>&nbsp;&nbsp;<%= @subtitle_for_content %></small>
+                <%- end -%>
+              </h1>
+            </div>
+            <div class="span2 right">
+              <%- if signed_in? -%>
+                <div id="user_display_bar">
+                  <div class="pull-right"><%= image_tag current_user.avatar_url, :size => "32x32" %></div>
+                  <div class="pull-right">you are signed in as<br /><span><%= current_user %></span></div>
+                </div>
+              <%- else -%>
+                <span><%= link_to 'Sign in via Github', sign_in_path %></span>
+              <%- end -%>
+            </div>
+          </div>
         </div>
-        
+
         <%= yield %>
       </div><!--/content-->
 
