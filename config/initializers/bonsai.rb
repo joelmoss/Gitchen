@@ -3,6 +3,6 @@ Tire.configure do
   
   if Rails.env.production?
     url "http://index.bonsai.io"
-    BONSAI_INDEX_NAME = URI.parse(ENV['BONSAI_INDEX_URL']).path[1..-1]
+    BONSAI_INDEX_NAME = URL(ENV['BONSAI_INDEX_URL']).path[1..-1]
   end
 end
