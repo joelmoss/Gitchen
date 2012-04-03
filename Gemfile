@@ -29,6 +29,12 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'inherited_resources'
 
+group :production do
+  gem 'pg'
+  gem 'foreman'
+  gem 'thin'
+end
+
 group :development do
   gem 'guard'
   gem 'guard-rspec'
