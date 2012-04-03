@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
     github.watched.each do |wr|
       attrs = wr.slice(:name, :language, :description, :fork, :private, :size, :forks,
                               :open_issues, :pushed_at, :created_at, :updated_at)
-      repo = Repo.find_or_create_by_id(wr.id, attrs.merge({:watchers_count => wr.watchers}))
+      repo = Repo.find_or_initialize_by_id(wr.id, attrs.merge({:watchers_count => wr.watchers}))
       repo.owner = User.find_or_create_by_username(wr.owner.login)
       repo.save
       watchings << repo
