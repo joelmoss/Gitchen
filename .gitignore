@@ -17,4 +17,6 @@
 /config/database.yml
 
 /.tm_properties
+/*.sublime-workspace
+
 /config/gitchen.yml
