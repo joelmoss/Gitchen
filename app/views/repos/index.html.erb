@@ -1,31 +1,27 @@
-<% if signed_in? %>
+<% if @repos.empty? %>
 
-  <% if @repos.empty? %>
+  <div class="alert alert-info">
+    <h4 class="alert-heading">Fetching your watched repos...</h4>
+    Please wait a few seconds, and they should start to appear below.
+  </div>
+  <div id="loading"></div>
 
-    <div class="alert alert-info">
-      <h4 class="alert-heading">Fetching your watched repos...</h4>
-      Please wait a few seconds, and they should start to appear below.
-    </div>
-    <div id="loading"></div>
+<% else %>
 
-  <% else %>
+  <%- title 'You are watching...' -%>
 
-    <%- title 'You are watching...' -%>
+  <div class="well">
 
-    <div class="well">
+    <%= render 'kaminari/page_entries_info', :collection => @repos %>
 
-      <%= render 'kaminari/page_entries_info', :collection => @repos %>
+    <table class="table table-striped">
+      <tbody>
+        <%= render @repos %>
+      </tbody>
+    </table>
 
-      <table class="table table-striped">
-        <tbody>
-          <%= render @repos %>
-        </tbody>
-      </table>
+    <%= render 'kaminari/page_entries_info', :collection => @repos %>
 
-      <%= render 'kaminari/page_entries_info', :collection => @repos %>
-
-    </div>
-
-  <% end %>
+  </div>
 
 <% end %>

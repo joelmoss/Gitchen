@@ -28,4 +28,8 @@ class Repo < ActiveRecord::Base
     name
   end
 
+  def to_param
+    "#{owner}/#{name}"
+  end
+
 end

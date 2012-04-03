@@ -1,24 +1,29 @@
 <tr>
   <td class="line-height6"><nobr>
-    <span class="badge">
-      <i class="icon-eye-<%= repo.private ? 'close' : 'open' %> icon-white"></i>
-      <%= repo.watchers_count %>
-    </span>
+    <%= link_to "https://github.com/#{repo.owner}/#{repo.original_name}/watchers", target: '_blank' do %>
+      <span class="badge badge-success">
+        <i class="icon-eye-<%= repo.private ? 'close' : 'open' %> icon-white"></i>
+        <%= repo.watchers_count %>
+      </span>
+    <% end -%>
   </nobr></td>
   <td>
     <h3>
       <%= link_to repo.owner, user_path(repo.owner) %> /
-      <%= link_to "https://github.com/#{repo.owner}/#{repo.original_name}", class: 'external-link', target: '_blank' do %>
-        <%= repo.original_name %> <i class="icon-share-alt"></i>
+      <%= link_to repo_path(repo.owner, repo.original_name), class: 'external-link', data: { target: '#repo-modal', toggle: "modal-ajax" } do %>
+        <%= repo.original_name %>
       <%- end -%>
+      <a href="<%= "https://github.com/#{repo.owner}/#{repo.original_name}" %>" target="_blank"><i class="icon-share-alt"></i></a>
     </h3>
     <p class="muted"><%= repo.description %></p>
   </td>
   <td class="muted"><h6 class="line-height6"><%= repo.language %></h6></td>
   <td class="line-height6"><nobr>
-    <span class="badge">
-      <i class="icon-random icon-white"></i>
-      <%= repo.forks %>
-    </span>
+    <%= link_to "https://github.com/#{repo.owner}/#{repo.original_name}/network", target: '_blank' do %>
+      <span class="badge">
+        <i class="icon-random icon-white"></i>
+        <%= repo.forks %>
+      </span>
+    <% end -%>
   </nobr></td>
 </tr>

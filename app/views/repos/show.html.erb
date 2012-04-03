@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <a class="close" data-dismiss="modal">×</a>
+  <h3>
+    <small><%= link_to @repo.owner, user_path(@repo.owner) %> /</small>
+    <%= link_to "https://github.com/#{@repo.owner}/#{@repo}", class: 'external-link', target: '_blank' do %>
+      <%= @repo %> <i class="icon-share-alt"></i>
+    <%- end -%>
+</div>
+
+<div class="modal-body">
+  <p><%= @repo.description %></p>
+</div>
+
+<div class="modal-footer">
+  <%= link_to "https://github.com/#{@repo.owner}/#{@repo}/watchers", target: '_blank' do %>
+    <span class="badge badge-success pull-left">
+      <i class="icon-eye-<%= @repo.private? ? 'close' : 'open' %> icon-white"></i>
+      <%= @repo.watchers.size %>
+    </span>
+  <% end -%>
+
+  <%= link_to "https://github.com/#{@repo.owner}/#{@repo}/network", target: '_blank' do %>
+    <span class="badge pull-left margin-left">
+      <i class="icon-random icon-white"></i>
+      <%= @repo.forks %>
+    </span>
+  <% end -%>
+
+  <%= link_to language_path(@repo.language) do %>
+    <span class="badge badge-info pull-left margin-left"><%= @repo.language %></span>
+  <% end -%>
+
+  <a href="#" class="btn" data-dismiss="modal">Close</a>
+</div>

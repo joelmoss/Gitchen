@@ -1,14 +1,13 @@
-<div class="well">
+<%- title 'You are watching repos owned by...' -%>
+<%- subtitle params[:id] %>
 
-  <div class="page-header">
-    <h3><%= params[:id] %></h3>
-  </div><!-- / -->
+<div class="well">
 
   <%= render 'kaminari/page_entries_info', :collection => @repos %>
 
   <table class="table table-striped">
     <tbody>
-      <%= render @repos %>
+      <%= render partial: 'users/repo', collection: @repos %>
     </tbody>
   </table>
 
