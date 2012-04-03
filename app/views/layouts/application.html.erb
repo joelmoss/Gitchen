@@ -36,7 +36,7 @@
             <ul class="nav">
               <% if signed_in? %>
                 <li><%= link_to "BROWSE:", root_path %></li>
-                <li class="dropdown<%= ' active' if controller_name == 'languages' %>">
+                <!-- <li class="dropdown">
                   <%= link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown" } do %>
                     LANGUAGES<b class="caret"></b>
                   <%- end -%>
@@ -45,8 +45,9 @@
                       <li class="<%= 'active' if language.language == params[:id] %>"><%= link_to "#{language.language.try(:capitalize) || 'Other'} (#{language.repos})", language_path(language.language || :other) %></li>
                     <%- end -%>
                   </ul>
-                </li>
-                <li><%= link_to "USERS", users_path %></li>
+                </li> -->
+                <li class="<%= 'active' if controller_name == 'languages' %>"><%= link_to "LANGUAGES", languages_path %></li>
+                <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to "USERS", users_path %></li>
               <% else %>
                 <li><%= link_to 'SIGN IN...', sign_in_path %></li>
               <% end %>

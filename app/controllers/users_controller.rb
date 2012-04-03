@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = current_user.watchings.joins(:owner).select('users.username, COUNT(repos.id) AS repos').
+    @users = current_user.watchings.joins(:owner).select('users.id, users.username, COUNT(repos.id) AS repos').
                                     page(params[:page]).group(:owner_id).order('repos DESC, username')
   end
 

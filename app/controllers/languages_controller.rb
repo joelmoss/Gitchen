@@ -4,7 +4,8 @@ class LanguagesController < ApplicationController
 
 
   def index
-    @repos = current_user.watchings.group_by(&:language)
+    @languages = current_user.watchings.select('repos.language, COUNT(repos.id) AS repos').
+                              page(params[:page]).group(:language).order('repos DESC, language')
   end
   
   def show

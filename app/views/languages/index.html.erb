@@ -1,10 +1,37 @@
-<div class="row">
+<%- title 'You are watching repos written in...' -%>
+
+<div class="well">
+
+  <%= render 'kaminari/page_entries_info', :collection => @languages, :entry_name => "language" -%>
+
+  <table class="table table-striped">
+    <tbody>
+
+      <%- @languages.each do |language| -%>
+
+        <tr>
+          <td>
+            <h2><%= link_to language.language || 'Unknown', language_path(language.language || 'other') %></h2>
+            <p>
+              <% current_user.watchings.sample(where: {language: language.language}).each_with_index do |repo,i| %>
+                <%= link_to "#{repo.owner}/#{repo}", repo, class: 'muted' %><%= ',' if i < language.repos && i < 3 && i < language.repos-1 %>
+              <%- end -%>
+            </p>
+          </td>
+          <td class="line-height6 right"><nobr>
+            <span class="badge">
+              <i class="icon-eye-open icon-white"></i>
+              <%= pluralize language.repos, 'repo' %>
+            </span>
+          </nobr></td>
+        </tr>
+
+      <%- end -%>
+
+    </tbody>
+  </table>
+
+  <%= render 'kaminari/page_entries_info', :collection => @languages, :entry_name => "language" -%>
 
 </div>
 
-
-<table class="table table-striped">
-  <tbody>
-    <%= render partial: 'dashboards/repo', collection: @repos %>
-  </tbody>
-</table>

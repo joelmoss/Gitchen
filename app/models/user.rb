@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
 
   has_many :watches
-  has_many :watchings, :through => :watches, :class_name => "Repo", :uniq => true
+  has_many :watchings, :through => :watches, :class_name => "Repo", :uniq => true do
+    def sample(query = {})
+      relation = order('RAND()').limit(query[:limit] || 4)
+      relation = relation.where(query[:where]) if query.key?(:where)
+    end
+  end
   has_many :repos, :foreign_key => "user_id"
 
   # The github data will be serialzed as a Hash.

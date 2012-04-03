@@ -15,8 +15,8 @@ body { padding-top: 100px; }
 // If you'd like to override bootstrap's own variables, you can do so here as well
 // See http://twitter.github.com/bootstrap/less.html for their names and documentation
 //
-// Example:
-// @linkColor: #FFCC00;
+
+@linkColor: #468847;
 
 .well {
   background: #DDD image-url('layout/furley_bg.png') repeat scroll top left;
@@ -31,5 +31,34 @@ body { padding-top: 100px; }
     text-shadow: 1px 1px #000;
     color: #AAA;
     text-transform: uppercase;
+  }
+}
+
+a.muted {
+  border-bottom: solid 1px #DDD;
+  &:hover {
+    border-bottom: none;
+    text-decoration: none
+  }
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+  border-radius: 16px;
+}
+
+a i.icon-share-alt {
+  margin-top: 5px;
+  opacity: 0.4;
+  width: 12px;
+  height: 12px;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.external-link {
+  color: darken(@linkColor, 15%);
+  &:hover i.icon-share-alt {
+    opacity: 1;
   }
 }

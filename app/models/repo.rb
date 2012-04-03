@@ -11,6 +11,7 @@ class Repo < ActiveRecord::Base
     indexes :language
     indexes :private, index: 'not_analyzed'
     indexes :watchers_count, index: 'not_analyzed'
+    indexes :forks, index: 'not_analyzed'
     indexes :owner, as: 'owner.username'
   end
 
