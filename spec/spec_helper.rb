@@ -11,6 +11,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 OmniAuth.config.test_mode = true
 
+# Allow connections to ElasticSearch
+WebMock.allow_net_connect!(:allow => "localhost:9200")
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

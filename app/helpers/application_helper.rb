@@ -36,5 +36,9 @@ module ApplicationHelper
     @breadcrumbs = [] if @breadcrumbs.nil?
     @breadcrumbs << [ text, link ]
   end
+  
+  def languages
+    current_user.watchings.language_list
+  end
 
 end

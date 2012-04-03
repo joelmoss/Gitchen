@@ -41,7 +41,7 @@
                     LANGUAGES<b class="caret"></b>
                   <%- end -%>
                   <ul class="dropdown-menu">
-                    <%- @languages.each do |language| -%>
+                    <%- languages.each do |language| -%>
                       <li class="<%= 'active' if language.language == params[:id] %>"><%= link_to "#{language.language.try(:capitalize) || 'Other'} (#{language.repos})", language_path(language.language || :other) %></li>
                     <%- end -%>
                   </ul>
@@ -52,9 +52,9 @@
               <% end %>
             </ul>
 
-            <form class="navbar-search pull-right">
-              <input type="text" class="search-query" placeholder="Search">
-            </form>
+            <%= form_tag searches_path, method: 'get', class: 'navbar-search pull-right' do %>
+              <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
+            <%- end -%>
           </div><!--/.nav-collapse -->
 
           <a class="brand" href="/">Gitchen</a>

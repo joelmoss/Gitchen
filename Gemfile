@@ -7,7 +7,7 @@ gem 'omniauth-github'
 gem 'hashie'
 gem 'octokit'
 gem 'kaminari', git: "https://github.com/joelmoss/kaminari", branch: "current_page_count"
-
+gem 'tire'
 gem 'sidekiq'
 gem 'slim'
 gem 'sinatra'
@@ -31,11 +31,11 @@ gem 'inherited_resources'
 
 group :development do
   gem 'guard'
-  gem 'guard-pow'
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'rb-fsevent'
   gem 'growl'
+  gem 'puma'
 end
 
 group :test do
