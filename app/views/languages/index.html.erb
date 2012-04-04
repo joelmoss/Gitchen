@@ -14,7 +14,7 @@
             <h2><%= link_to language.language || 'Unknown', language_path(language.language || 'other') %></h2>
             <p>
               <% current_user.watchings.sample(where: {language: language.language}).each_with_index do |repo,i| %>
-                <%= link_to repo, repo_path(repo.owner.username, repo.name), class: 'muted', data: { target: '#repo-modal', toggle: "modal-ajax" } %><%= ',' if i < language.repos && i < 3 && i < language.repos-1 %>
+                <%= link_to repo, repo_path(repo.owner.username, repo.name), class: 'muted', data: { target: '#repo-modal', toggle: "modal-ajax" } %><%= ',' if i < language.repos.to_i && i < 3 && i < language.repos.to_i-1 %>
               <%- end -%>
             </p>
           </td>
