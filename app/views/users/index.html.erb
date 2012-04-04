@@ -14,7 +14,7 @@
           <h2><%= link_to user.username, user_path(user.username) %></h2>
           <p>
             <% current_user.watchings.sample(where: {owner_id: user.id}, limit: 6).each_with_index do |repo,i| %>
-              <%= link_to repo, repo_path(user.username, repo.name), class: 'muted', data: { target: '#repo-modal', toggle: "modal-ajax" } %><%= ',' if i < user.repos && i < 5 && i < user.repos-1 %>
+              <%= link_to repo, repo_path(user.username, repo.name), class: 'muted', data: { target: '#repo-modal', toggle: "modal-ajax" } %><%= ',' if i < user.repos.to_i && i < 5 && i < user.repos.to_i-1 %>
             <%- end -%>
           </p>
         </td>
