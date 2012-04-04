@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :watches
   has_many :watchings, :through => :watches, :class_name => "Repo", :uniq => true do
     def sample(query = {})
-      if Rails.configuration.database_configuration[Rails.env]['adapter'] == 'postgres'
+      if Rails.configuration.database_configuration[Rails.env]['adapter'] == 'postgresql'
         random_function = 'RANDOM()'
       else
         random_function = 'RAND()'
