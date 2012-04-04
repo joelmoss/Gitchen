@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @repos = current_user.watchings.where('users.username' => params[:id]).page(params[:page]).
-                                    includes(:owner).order('watchers_count DESC, name')
+                                    includes(:owner).order('repos.watchers_count DESC, repos.name')
   end
 
 end
