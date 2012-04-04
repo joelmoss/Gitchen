@@ -11,7 +11,7 @@ gem 'tire'
 gem 'sidekiq'
 gem 'slim'
 gem 'sinatra'
-
+gem 'exceptional'
 
 # Gems used only for assets and not required
 # in production environments by default.
