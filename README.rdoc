@@ -37,7 +37,7 @@ Github repos.
 
 === Popularity/Rating/Score
 
-Each repo (and possible each user) is given a score based on his repo's stats forks,
+Each repo (and possibly each user) is given a score based on his repo's stats forks,
 watchers and issues.
 
 
