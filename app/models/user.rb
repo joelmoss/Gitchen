@@ -4,12 +4,11 @@ class User < ActiveRecord::Base
   has_many :watchings, :through => :watches, :class_name => "Repo", :uniq => true do
     def sample(query = {})
       if Rails.configuration.database_configuration[Rails.env]['adapter'] == 'postgresql'
-        random_function = 'RANDOM()'
+        relation = order('RANDOM()').select('repos.*, RANDOM()').limit(query[:limit] || 4)
       else
-        random_function = 'RAND()'
+        relation = order('RAND()').limit(query[:limit] || 4)
       end
 
-      relation = order(random_function).limit(query[:limit] || 4)
       relation = relation.where(query[:where]) if query.key?(:where)
     end
   end
