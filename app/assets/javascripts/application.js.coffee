@@ -21,6 +21,21 @@ $ ->
   $("a[rel=tooltip]").tooltip()
 
 
+# Fetch repos on loading page
+# -----------------------------------------------------------------------------
+
+$ ->
+  if $('#loading').size() > 0
+    fetch_repos = ->
+      $.getJSON '/repos', (data)->
+        if data.success
+          location.reload()
+        else
+          setTimeout fetch_repos, 10000
+
+    setTimeout fetch_repos, 10000
+
+
 # Handle ajax modals
 # -----------------------------------------------------------------------------
 

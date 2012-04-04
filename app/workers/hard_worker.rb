@@ -2,6 +2,7 @@ class HardWorker
   include Sidekiq::Worker
 
   def perform(id)
-    User.find(id).fetch_watched_repos
+    user = User.find(id)
+    user.fetch_watched_repos unless user.fetching_repos?
   end
 end

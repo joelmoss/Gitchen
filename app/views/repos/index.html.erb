@@ -1,8 +1,9 @@
 <% if @repos.empty? %>
 
+  <% title 'Fetching your watched repos...' -%>
   <div class="alert alert-info">
-    <h4 class="alert-heading">Fetching your watched repos...</h4>
-    Please wait a few seconds, and they should start to appear below.
+    <h4 class="alert-heading">We are fetching your watched repos from Github...</h4>
+    Please wait a few seconds, and they should start to appear below. If you think you have been waiting too long (10 seconds is not too long, 10 days is!), please refresh this page. If you still don't see anything, please <a href="https://github.com/joelmoss/gitchen/issues" target="_blank">let me know</a>.
   </div>
   <div id="loading"></div>
 

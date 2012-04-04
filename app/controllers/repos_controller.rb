@@ -8,7 +8,14 @@ class ReposController < ApplicationController
 
 
   def index
-    @repos = current_user.watchings.page(params[:page]).includes(:owner)
+    respond_to do |wants|
+      wants.html do
+        @repos = current_user.watchings.page(params[:page]).includes(:owner)
+      end
+      wants.js do
+        render json: { success: current_user.watchings.count > 0 }
+      end
+    end
   end
 
   def show

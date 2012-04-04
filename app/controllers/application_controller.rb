@@ -2,9 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :current_user, :signed_in?
+  before_filter :get_repo_count, if: :signed_in?
 
 
   private
+
+    def get_repo_count
+      @repo_count = current_user.watchings.count
+    end
 
     def current_user
       return nil unless session[:user_id]

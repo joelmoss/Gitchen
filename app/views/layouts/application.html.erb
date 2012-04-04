@@ -34,7 +34,7 @@
 
           <div class="nav-collapse">
             <ul class="nav">
-              <% if signed_in? %>
+              <% if signed_in? && @repo_count %>
                 <li class="<%= 'active' if controller_name == 'repos' %>"><%= link_to "REPOS", repos_path %></li>
                 <li class="<%= 'active' if controller_name == 'languages' %>"><%= link_to "LANGUAGES", languages_path %></li>
                 <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to "USERS", users_path %></li>
@@ -43,7 +43,7 @@
 
             <%= form_tag searches_path, method: 'get', class: 'navbar-search pull-right' do %>
               <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
-            <%- end if signed_in? -%>
+            <%- end if signed_in? && @repo_count -%>
           </div><!--/.nav-collapse -->
 
           <a class="brand" href="/">Gitchen</a>
