@@ -1,4 +1,4 @@
-<% if @repos.empty? %>
+<% if @repos.current_page_count < 1 %>
 
   <% title 'Fetching your watched repos...' -%>
   <div class="alert alert-info">
