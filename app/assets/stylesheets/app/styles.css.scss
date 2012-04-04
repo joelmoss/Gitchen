@@ -1,0 +1,99 @@
+@import 'libs/spacing';
+
+
+/* Utilities
+/* ---------------------------------------------------------------------------- */
+
+.table th.right, .table td.right, .right {
+  text-align: right;
+}
+.table th.left, .table td.left, .left {
+  text-align: left;
+}
+
+#loading {
+  background: transparent image-url('loading.gif') no-repeat scroll center center;
+  height: 150px;
+}
+
+#user_display_bar {
+  img {
+    border: 4px solid #666;
+    margin-left: 8px;
+  }
+  color: #CCC;
+  font-size: 11px;
+  span {
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+
+/* Layout
+/* ---------------------------------------------------------------------------- */
+
+body {
+  background: #DDD image-url('layout/dark_wood.png') repeat scroll top left;
+}
+
+footer {
+  border-top: 1px dashed #333;
+  color: #666;
+  margin: 65px 0 40px;
+  font-size: 12px;
+  padding-top: 10px;
+
+  a {
+    color: #888;
+    &:hover {
+      color: #CCC;
+      text-decoration: none;
+    }
+  }
+}
+
+.navbar {
+  .navbar-inner {
+    background: #DDD image-url('layout/nav_bg.gif') repeat-x scroll top left;
+    height: 47px;
+    padding-top: 15px;
+
+    .nav {
+      margin: {
+        top: 2px;
+        // left: 20px;
+      }
+      font: {
+        family: 'Terminal Dosis', sans-serif;
+        transform: uppercase;
+        size: 15px;
+        weight: 600;
+      }
+      line-height: 44px;
+      letter-spacing: 1px;
+    }
+
+    .brand {
+      background: transparent image-url('layout/logo.png') no-repeat scroll top left;
+      text-indent: -9999px;
+      width: 252px !important;
+      height: 99px;
+      padding: 0 !important;
+      margin: 0 auto;
+      position: relative;
+      top: -7px;
+      text-align: center;
+      float: none;
+      z-index: 2;
+    }
+  }
+
+  .navbar-bottom {
+    height: 17px;
+    opacity: 0.2;
+    background-color: #FFF;
+    z-index: 1;
+  }
+}

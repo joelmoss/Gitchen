@@ -9,7 +9,7 @@ Gitchen::Application.routes.draw do
   get 'repos/:owner/:id' => 'repos#show', as: :repo
   resources :languages, :users, :searches, only: [ :index, :show ]
 
-  root to: "repos#index"
+  root to: "pages#index"
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

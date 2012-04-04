@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= "#{@title_for_content} - " if @title_for_content %>Gitchen</title>
+    <title>Manage your watched Github Repos - What's in your Gitchen?</title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -13,7 +13,7 @@
 
     <!-- Le styles -->
     <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:600' rel='stylesheet' type='text/css'>
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "homepage", :media => "all" %>
 
     <!-- Le fav and touch icons -->
     <link href="images/favicon.ico" rel="shortcut icon">
@@ -21,31 +21,11 @@
     <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
     <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
   </head>
-  <body>
+  <body id="home">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-          <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-
-          <div class="nav-collapse">
-            <ul class="nav">
-              <% if signed_in? %>
-                <li class="<%= 'active' if controller_name == 'repos' %>"><%= link_to "REPOS", repos_path %></li>
-                <li class="<%= 'active' if controller_name == 'languages' %>"><%= link_to "LANGUAGES", languages_path %></li>
-                <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to "USERS", users_path %></li>
-              <% end %>
-            </ul>
-
-            <%= form_tag searches_path, method: 'get', class: 'navbar-search pull-right' do %>
-              <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
-            <%- end if signed_in? -%>
-          </div><!--/.nav-collapse -->
-
+        <div class="container">
           <a class="brand" href="/">Gitchen</a>
         </div>
       </div>
@@ -54,27 +34,6 @@
 
     <div class="container">
       <div class="content">
-        <div class="page-header">
-          <div class="row">
-            <div class="span10">
-              <h1>
-                <%= @title_for_content if show_title? %>
-                <%- if show_subtitle? -%>
-                  <small>&nbsp;&nbsp;<%= @subtitle_for_content %></small>
-                <%- end -%>
-              </h1>
-            </div>
-            <div class="span2 right">
-              <%- if signed_in? -%>
-                <div id="user_display_bar">
-                  <div class="pull-right"><%= image_tag current_user.avatar_url, :size => "32x32" %></div>
-                  <div class="pull-right">you are signed in as<br /><span><%= current_user %></span></div>
-                </div>
-              <%- end -%>
-            </div>
-          </div>
-        </div>
-
         <%= yield %>
       </div><!--/content-->
 
@@ -101,7 +60,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "homepage" %>
 
   </body>
 </html>

@@ -11,5 +11,5 @@
  *= require_self
  *= require bootstrap
  *= require common
- *= require_tree ./app
+ *= require_tree ./home
 */
