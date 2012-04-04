@@ -21,40 +21,28 @@ Github repos.
   - Browse by:
     - language
     - user
-    - forks
+    - forks (coming soon)
 
-  - Sort by:
+  - Sort by: (coming soon)
     - watchers
     - forks
     - issues
     - size
     - owner's followers
 
-  - Additional features:
+  - Additional features: (coming soon)
     - Add tags
     - Add notes or modify (overwrite) description
 
 
-=== Popularity/Rating/Score
+=== Popularity/Rating/Score (TBD)
 
 Each repo (and possibly each user) is given a score based on his repo's stats forks,
 watchers and issues.
 
 
-=== Process
 
-  - Sign up
-    - fetch users watched repos [GET /users/:user/watched]
-
-  - Sign in
-    - update users watched repos (max once every 24 hours) [GET /users/:user/watched]
-
-  - On every signed in request
-    - update users watched repos (max once every 24 hours) [GET /users/:user/watched]
-
-
-
-=== Utilities/Tools
+=== Utilities/Tools (coming soon)
 
   - Prune watched repos
     - stop watching repos not updated since x days/weeks/months
