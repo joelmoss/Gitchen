@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
         random_function = 'RAND()'
       end
 
-      relation = order('RAND()').limit(query[:limit] || 4)
+      relation = order(random_function).limit(query[:limit] || 4)
       relation = relation.where(query[:where]) if query.key?(:where)
     end
   end
