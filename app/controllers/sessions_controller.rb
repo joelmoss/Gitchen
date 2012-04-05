@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
     user.update_attributes attributes
 
     session[:user_id] = user.id
+    cookies.permanent[:user_id] = user.id
     redirect_to root_url, :notice => 'Successfully signed in via Github!'
   end
 

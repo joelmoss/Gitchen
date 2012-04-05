@@ -54,6 +54,10 @@ $ ->
                               $('#home footer').fadeIn 1000
 
 
+  unless showAnimation
+    animate_home = ->
+      $('#home').find('h1, .navbar-fixed-top, .btn-large, footer').fadeIn 2000
+
   setTimeout animate_home, 1000
 
 
