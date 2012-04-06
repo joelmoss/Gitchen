@@ -27,6 +27,7 @@ describe "Authentication" do
         attrs = { github_data: {login: user.username}, github_access_token: "somerandomstring" }
         User.should_receive(:find_or_create_by_username).with(user.username, attrs).and_return(user)
         user.should_receive(:update_attributes)
+        HardWorker.should_receive(:perform_async)
 
         get "/auth/github"
         follow_redirect!

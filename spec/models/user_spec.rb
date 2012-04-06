@@ -2,13 +2,6 @@ require 'spec_helper'
 
 describe User do
 
-  describe "after creation, fetch the watched repos list" do
-    it "should call the Github API" do
-      HardWorker.should_receive(:perform_async)
-      User.find_or_create_by_username(Faker::Internet.user_name, :github_access_token => 'somerandomstring')
-    end
-  end
-
   describe "#fetch_watched_repos" do
     let(:user) { create(:user) }
 
