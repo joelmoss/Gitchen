@@ -34,23 +34,24 @@ $ ->
     css_opts = {display: 'none', visibility: 'visible'}
 
     $('#home h2:first').css(css_opts).fadeIn 2000, ->
-      $(this).fadeOut 2000, ->
+      $(this).fadeOut ->
         $(this).remove()
         $('#home h2:first').css(css_opts).fadeIn 2000, ->
-          $(this).fadeOut 2000, ->
+          $(this).fadeOut ->
             $(this).remove()
             $('#home h2:first').css(css_opts).fadeIn 2000, ->
-              $(this).fadeOut 2000, ->
+              $(this).fadeOut ->
                 $(this).remove()
                 $('#home h2:first').css(css_opts).fadeIn 2000, ->
-                  $(this).fadeOut 2000, ->
+                  $(this).fadeOut ->
                     $(this).remove()
                     $('#home h2:first').css(css_opts).fadeIn 2000, ->
-                      $(this).fadeOut 3000, ->
+                      $(this).fadeOut ->
                         $(this).remove()
                         $('#home h1').fadeIn 2000, ->
                             $('#home .navbar-fixed-top').fadeIn 3000
                             $('#home .btn-large').fadeIn 1000, ->
+                              $('#home #skip-animation').fadeOut()
                               $('#home footer').fadeIn 1000
 
 
@@ -60,4 +61,6 @@ $ ->
 
   setTimeout animate_home, 1000
 
-
+  $('#skip-animation').on 'click', ->
+    $('#home').find('h1, .navbar-fixed-top, .btn-large, footer').fadeIn 2000
+    $(this).fadeOut()
