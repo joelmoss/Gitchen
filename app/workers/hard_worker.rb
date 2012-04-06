@@ -1,5 +1,6 @@
 class HardWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => false
 
   def perform(id)
     user = User.find(id)
