@@ -65,6 +65,8 @@ class User < ActiveRecord::Base
   def fetch_watched_repos
     toggle! :fetching_repos
 
+    Sidekiq::Util.logger.info "[#{username}] Fetching watched repos..."
+
     github.watched.each do |wr|
       attrs = wr.slice(:name, :language, :description, :fork, :private, :size, :forks,
                               :open_issues, :pushed_at, :created_at, :updated_at)
@@ -79,7 +81,10 @@ class User < ActiveRecord::Base
       repo.owner = User.find_or_create_by_username(wr.owner.login)
       repo.save
 
-      watchings << repo unless watchings.exists?(repo.id)
+      unless watchings.exists?(repo.id)
+        watchings << repo
+        Sidekiq::Util.logger.info "[#{username}] now watching #{wr.name}"
+      end
     end
 
     toggle! :fetching_repos
