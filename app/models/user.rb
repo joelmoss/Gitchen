@@ -57,11 +57,11 @@ class User < ActiveRecord::Base
   def fetch_watched_repos
     toggle! :fetching_repos
 
-    Sidekiq::Util.logger.info { "[#{username}] Fetching watched repos..." }
+    sidekiq_logger.info { "[#{username}] Fetching watched repos..." }
 
-    github.watched.each do |wr|
-      attrs = wr.slice(:name, :language, :description, :fork, :private, :size, :forks,
-                              :open_issues, :pushed_at, :created_at, :updated_at)
+    github_watched.each do |wr|
+      attrs = wr.slice(:name, :language, :description, :fork, :private, :size,
+                       :forks, :open_issues, :pushed_at, :created_at, :updated_at)
 
       if repo = Repo.find_by_id(wr.id)
         repo.attributes = attrs.merge({:watchers_count => wr.watchers})
@@ -75,13 +75,38 @@ class User < ActiveRecord::Base
 
       unless watchings.exists?(repo.id)
         watchings << repo
-        Sidekiq::Util.logger.info { "[#{username}] now watching #{wr.name}" }
+        sidekiq_logger.info { "[#{username}] now watching #{wr.name}" }
       end
     end
 
-    Sidekiq::Util.logger.info { "[#{username}] Completed fetching watched repos" }
+    sidekiq_logger.info { "[#{username}] Completed fetching watched repos" }
+
+    prune_unwatched_repos
 
     toggle! :fetching_repos
+  end
+
+  # Prune repos that are no longer being watched.
+  def prune_unwatched_repos
+    gitchen_ids, github_ids = watchings.map(&:id), github_watched.map(&:id)
+
+    sidekiq_logger.info { "[#{username}] Pruning watched repos..." }
+
+    (pruned = watchings.find(gitchen_ids - github_ids)).each do |repo|
+      sidekiq_logger.info { "[#{username}] stopped watching #{repo}" }
+    end
+
+    watchings.delete pruned
+
+    sidekiq_logger.info { "[#{username}] Completed pruning watched repos" }
+  end
+
+  def github_watched
+    @github_watched ||= github.watched
+  end
+
+  def sidekiq_logger
+    Sidekiq::Util.logger
   end
 
 end
