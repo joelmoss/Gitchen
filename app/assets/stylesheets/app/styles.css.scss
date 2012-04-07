@@ -30,6 +30,17 @@
   }
 }
 
+tr.unwatched {
+  .badge {
+    background-color: #DDD;
+    text-decoration: line-through;
+  }
+  h3, h3 a, h6, p {
+    color: #DDD;
+    text-decoration: line-through;
+  }
+}
+
 
 /* Layout
 /* ---------------------------------------------------------------------------- */

@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     user = User.find_or_create_by_username(data[:login], attributes)
     user.update_attributes attributes
 
-    HardWorker.perform_async(user.id) if user.github_access_token
+    FetchWorker.perform_async(user.id) if user.github_access_token
 
     session[:user_id] = user.id
     cookies.permanent[:user_id] = user.id

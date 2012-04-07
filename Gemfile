@@ -11,6 +11,7 @@ gem 'tire'
 gem 'sidekiq'
 gem 'slim'
 gem 'sinatra'
+gem 'coffeebeans'
 gem 'exceptional'
 
 # Gems used only for assets and not required
@@ -42,6 +43,7 @@ group :development do
   gem 'rb-fsevent'
   gem 'growl'
   gem 'puma'
+  gem 'debugger'
 end
 
 group :test do

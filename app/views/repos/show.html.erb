@@ -13,22 +13,25 @@
 
 <div class="modal-footer">
   <%= link_to "https://github.com/#{@repo.owner}/#{@repo}/watchers", target: '_blank' do %>
-    <span class="badge badge-success pull-left">
+    <span class="badge badge-success pull-left margin-top">
       <i class="icon-eye-<%= @repo.private? ? 'close' : 'open' %> icon-white"></i>
       <%= @repo.watchers.size %>
     </span>
   <% end -%>
 
   <%= link_to "https://github.com/#{@repo.owner}/#{@repo}/network", target: '_blank' do %>
-    <span class="badge pull-left margin-left">
+    <span class="badge pull-left margin-left margin-top">
       <i class="icon-random icon-white"></i>
       <%= @repo.forks %>
     </span>
   <% end -%>
 
   <%= link_to language_path(@repo.language) do %>
-    <span class="badge badge-info pull-left margin-left"><%= @repo.language %></span>
+    <span class="badge badge-info pull-left margin-left margin-top"><%= @repo.language %></span>
   <% end -%>
 
-  <a href="#" class="btn" data-dismiss="modal">Close</a>
+  <div class="btn-group pull-right">
+    <%= link_to 'Unwatch', unwatch_repo_path, method: :delete, confirm: 'Are you sure you want to stop watching this repo?', class: 'btn unwatch', remote: true %>
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
 </div>

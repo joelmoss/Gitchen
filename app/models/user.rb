@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
 
-  has_many :watches
+  has_many :repos, :foreign_key => "user_id"
+  has_many :watches do
+    def unwatch(repo)
+      where(repo_id: repo.id).first.unwatch
+    end
+  end
   has_many :watchings, :through => :watches, :class_name => "Repo", :uniq => true do
     def sample(query = {})
       if Rails.configuration.database_configuration[Rails.env]['adapter'] == 'postgresql'
@@ -12,7 +17,6 @@ class User < ActiveRecord::Base
       relation = relation.where(query[:where]) if query.key?(:where)
     end
   end
-  has_many :repos, :foreign_key => "user_id"
 
   # The github data will be serialzed as a Hash.
   serialize :github_data
