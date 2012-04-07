@@ -7,7 +7,7 @@ gem 'omniauth-github'
 gem 'hashie'
 gem 'octokit'
 gem 'kaminari', git: "https://github.com/joelmoss/kaminari", branch: "current_page_count"
-gem 'tire'
+gem 'tire', git: 'https://github.com/karmi/tire.git'
 gem 'sidekiq'
 gem 'slim'
 gem 'sinatra'
