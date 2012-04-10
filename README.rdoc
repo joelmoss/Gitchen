@@ -21,7 +21,6 @@ Github repos.
   - Browse by:
     - language
     - user
-    - forks (coming soon)
 
   - Sort by: (coming soon)
     - watchers
