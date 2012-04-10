@@ -56,24 +56,20 @@
     <div class="container">
       <div class="content">
         <div class="page-header">
-          <div class="row">
-            <div class="span10">
-              <h1>
-                <%= @title_for_content if show_title? %>
-                <%- if show_subtitle? -%>
-                  <small>&nbsp;&nbsp;<%= @subtitle_for_content %></small>
-                <%- end -%>
-              </h1>
-            </div>
-            <div class="span2 right">
-              <%- if signed_in? -%>
-                <div id="user_display_bar">
-                  <div class="pull-right"><%= image_tag current_user.avatar_url, :size => "32x32" %></div>
-                  <div class="pull-right">you are signed in as<br /><span><%= current_user %></span></div>
-                </div>
-              <%- end -%>
-            </div>
+          <div class="pull-right right">
+            <%- if signed_in? -%>
+              <div id="user_display_bar">
+                <div class="pull-right"><%= image_tag current_user.avatar_url, :size => "32x32" %></div>
+                <div class="pull-right">you are signed in as<br /><span><%= current_user %></span></div>
+              </div>
+            <%- end -%>
           </div>
+          <h1>
+            <%= @title_for_content if show_title? %>
+            <%- if show_subtitle? -%>
+              <small>&nbsp;&nbsp;<%= @subtitle_for_content %></small>
+            <%- end -%>
+          </h1>
         </div>
 
         <%= yield %>
