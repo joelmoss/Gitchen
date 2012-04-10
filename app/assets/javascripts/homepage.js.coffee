@@ -52,15 +52,15 @@ $ ->
                             $('#home .navbar-fixed-top').fadeIn 3000
                             $('#home .btn-large').fadeIn 1000, ->
                               $('#home #skip-animation').fadeOut()
-                              $('#home footer').fadeIn 1000
+                              $('#home footer, #home p').fadeIn 1000
 
 
   unless showAnimation
     animate_home = ->
-      $('#home').find('h1, .navbar-fixed-top, .btn-large, footer').fadeIn 2000
+      $('#home').find('h1, .navbar-fixed-top, .btn-large, footer, p').fadeIn 2000
 
   setTimeout animate_home, 1000
 
   $('#skip-animation').on 'click', ->
-    $('#home').find('h1, .navbar-fixed-top, .btn-large, footer').fadeIn 2000
+    $('#home').find('h1, .navbar-fixed-top, .btn-large, footer, p').fadeIn 2000
     $(this).fadeOut()
