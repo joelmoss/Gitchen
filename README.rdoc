@@ -41,6 +41,13 @@ Each repo (and possibly each user) is given a score based on his repo's stats fo
 watchers and issues.
 
 
+=== Customised Event Stream (coming soon)
+
+Github has a timeline, but it shows absolutely everything. How about we let you choose
+what you want to see in your timeline for the repos you are watching. For example: you
+may only want to see new branches and tags in your timeline, or perhaps only events
+regarding issues, but no commits.
+
 
 === Utilities/Tools (coming soon)
 
