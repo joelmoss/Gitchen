@@ -22,12 +22,11 @@ Github repos.
     - language
     - user
 
-  - Sort by: (coming soon)
+  - Sort by:
     - watchers
     - forks
     - issues
     - size
-    - owner's followers
 
   - Additional features: (coming soon)
     - Add tags
