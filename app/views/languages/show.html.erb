@@ -3,6 +3,15 @@
 
 <div class="well">
 
+  <% content_for :sort_options do %>
+    <li><%= sort :'repos.watchers_count', as: 'Watchers' %></li>
+    <li><%= sort :'repos.forks', as: 'Forks' %></li>
+    <li><%= sort :'repos.open_issues', as: 'Open Issues' %></li>
+    <li><%= sort :'repos.size', as: 'Size' %></li>
+    <li><%= sort :'repos.name', as: 'Name' %></li>
+    <li><%= sort :'users.username', as: 'Owner' %></li>
+  <% end -%>
+
   <%= render 'kaminari/page_entries_info', :collection => @repos %>
 
   <table class="table table-striped">

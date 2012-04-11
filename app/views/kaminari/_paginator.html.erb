@@ -6,9 +6,26 @@
     remote:        data-remote
     paginator:     the paginator that renders the pagination tags inside
 -%>
-<%= paginator.render do -%>
-  <ul class="pager">
-    <%= prev_page_tag unless current_page.first? %>
-    <%= next_page_tag unless current_page.last? %>
+<%= paginator.render do |p| -%>
+
+  <ul class="nav nav-pills">
+    <%= p.prev_page_tag unless current_page.first? %>
+
+    <% if content_for? :sort_options %>
+      <li class="dropdown" id="menu1">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+          Sort by <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <%= yield :sort_options %>
+        </ul>
+      </li>
+    <% end -%>
+
+    <%= p.next_page_tag unless current_page.last? %>
   </ul>
+
 <% end -%>
+
+
+

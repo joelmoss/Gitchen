@@ -1,6 +1,6 @@
 <div class="clearfix">
   <div class="pull-left padding-bottom6 padding-top2">
-    <%= page_entries_info(collection, :entry_name => (begin; entry_name; rescue; nil; end)).html_safe %>
+    <%= page_entries_info(collection, :entry_name => (begin; entry_name; rescue; nil; end)).html_safe %>. <%= order_info %>
   </div>
   <div class="pull-right">
     <%= paginate collection %>

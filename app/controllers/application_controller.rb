@@ -1,3 +1,10 @@
+class Kaminari::Helpers::Paginator
+  def render(&block)
+    yield self
+    @output_buffer
+  end
+end
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 

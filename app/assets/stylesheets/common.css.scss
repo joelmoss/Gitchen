@@ -57,6 +57,12 @@ footer {
 .navbar {
   .navbar-inner {
     background: #DDD image-url('layout/nav_bg.gif') repeat-x scroll top left;
+    @media (max-width: 768px) {
+      height: 42px;
+    }
+    @media (min-width: 768px) and (max-width: 980px) {
+      height: 42px;
+    }
     height: 47px;
     padding-top: 15px;
 

@@ -7,12 +7,13 @@ gem 'omniauth-github'
 gem 'hashie'
 gem 'octokit'
 gem 'kaminari', git: "https://github.com/joelmoss/kaminari", branch: "current_page_count"
-gem 'tire', git: 'https://github.com/karmi/tire.git'
+gem 'tire'
 gem 'sidekiq'
 gem 'slim'
 gem 'sinatra'
 gem 'coffeebeans'
 gem 'exceptional'
+gem 'scoped_search'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,7 +43,6 @@ group :development do
   gem 'guard-bundler'
   gem 'rb-fsevent'
   gem 'growl'
-  gem 'puma'
   gem 'debugger'
 end
 

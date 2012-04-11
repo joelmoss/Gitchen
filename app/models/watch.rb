@@ -10,10 +10,11 @@ class Watch < ActiveRecord::Base
     indexes :description, as: 'watching.description'
     indexes :language, as: 'watching.language'
     indexes :private, as: 'watching.private', index: 'not_analyzed'
-    indexes :watchers_count, as: 'watching.watchers_count', index: 'not_analyzed'
-    indexes :forks, as: 'watching.forks', index: 'not_analyzed'
+    indexes :watchers_count, as: 'watching.watchers_count', index: 'not_analyzed', type: 'integer'
+    indexes :forks, as: 'watching.forks', index: 'not_analyzed', type: 'integer'
+    indexes :open_issues, as: 'watching.open_issues', index: 'not_analyzed', type: 'integer'
     indexes :owner, as: 'watching.owner.username'
-    indexes :watcher_id, as: 'user_id'
+    indexes :watcher_id, as: 'user_id', type: 'integer'
     indexes :deleting
   end
 

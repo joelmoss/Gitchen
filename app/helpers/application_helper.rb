@@ -36,9 +36,16 @@ module ApplicationHelper
     @breadcrumbs = [] if @breadcrumbs.nil?
     @breadcrumbs << [ text, link ]
   end
-  
+
   def languages
     current_user.watchings.language_list
+  end
+
+  def order_info
+    return unless params[:order]
+
+    attribute, direction = params[:order].downcase.split(' ')
+    "Ordered in #{direction}ending order by #{attribute.split('.').last.humanize.downcase}."
   end
 
 end

@@ -2,6 +2,11 @@
 
 <div class="well">
 
+  <% content_for :sort_options do %>
+    <li><%= sort :repos %></li>
+    <li><%= sort :username %></li>
+  <% end -%>
+
   <%= render 'kaminari/page_entries_info', :collection => @users, :entry_name => "user" -%>
 
   <table class="table table-striped">
