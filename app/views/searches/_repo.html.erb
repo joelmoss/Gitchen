@@ -1,4 +1,4 @@
-<tr id="repo-<%= repo.id %>">
+<tr class="repo" id="repo-<%= repo.id %>">
   <td class="line-height6"><nobr>
     <%= link_to "https://github.com/#{repo.owner}/#{repo.original_name}/watchers", target: '_blank' do %>
       <span class="badge badge-success">
@@ -6,8 +6,10 @@
         <%= repo.watchers_count %>
       </span>
     <% end -%>
+
+    <%= link_to 'edit...', '#', class: 'edit-description btn btn-danger btn-mini' %>
   </nobr></td>
-  <td>
+  <td style="width:100%;">
     <h3>
       <%= link_to repo.owner, user_path(repo.owner) %> /
       <%= link_to repo_path(repo.owner, repo.original_name), class: 'external-link', data: { target: '#repo-modal', toggle: "modal-ajax" } do %>
@@ -15,7 +17,7 @@
       <%- end -%>
       <a href="<%= "https://github.com/#{repo.owner}/#{repo.original_name}" %>" target="_blank"><i class="icon-share-alt"></i></a>
     </h3>
-    <p class="muted"><%= repo.description %></p>
+    <p class="description muted"><%= repo.watch_description %></p>
   </td>
   <td class="muted"><h6 class="line-height6"><%= repo.language %></h6></td>
   <td class="line-height6"><nobr>

@@ -26,8 +26,8 @@
     </span>
   <% end -%>
 
-  <%= link_to language_path(@repo.language) do %>
-    <span class="badge badge-info pull-left margin-left margin-top"><%= @repo.language %></span>
+  <%= link_to language_path(@repo.language || 'other') do %>
+    <span class="badge badge-info pull-left margin-left margin-top"><%= @repo.language || 'Unknown' %></span>
   <% end -%>
 
   <div class="btn-group pull-right">

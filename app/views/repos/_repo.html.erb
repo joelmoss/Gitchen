@@ -1,28 +1,30 @@
-<tr id="repo-<%= repo.id %>">
-  <td class="line-height6"><nobr>
-    <%= link_to "https://github.com/#{repo.owner}/#{repo}/watchers", target: '_blank' do %>
+<tr class="repo" id="repo-<%= repo.watching.id %>">
+  <td class="line-height5 center"><nobr>
+    <%= link_to "https://github.com/#{repo.watching.owner}/#{repo.watching}/watchers", target: '_blank' do %>
       <span class="badge badge-success">
-        <i class="icon-eye-<%= repo.private? ? 'close' : 'open' %> icon-white"></i>
-        <%= repo.watchers.size %>
+        <i class="icon-eye-<%= repo.watching.private? ? 'close' : 'open' %> icon-white"></i>
+        <%= repo.watching.watchers.size %>
       </span>
     <% end -%>
+
+    <%= link_to 'edit...', '#', class: 'edit-description btn btn-danger btn-mini' %>
   </nobr></td>
-  <td>
+  <td style="width:100%;">
     <h3>
-      <%= link_to repo.owner, user_path(repo.owner.username) %> /
-      <%= link_to repo_path(repo.owner.username, repo.name), class: 'external-link', data: { target: '#repo-modal', toggle: "modal-ajax" } do %>
-        <%= repo %>
+      <%= link_to repo.watching.owner, user_path(repo.watching.owner.username) %> /
+      <%= link_to repo_path(repo.watching.owner.username, repo.watching.name), class: 'external-link', data: { target: '#repo-modal', toggle: "modal-ajax" } do %>
+        <%= repo.watching %>
       <%- end -%>
-      <a href="<%= "https://github.com/#{repo.owner}/#{repo}" %>" target="_blank"><i class="icon-share-alt"></i></a>
+      <a href="<%= "https://github.com/#{repo.watching.owner}/#{repo.watching}" %>" target="_blank"><i class="icon-share-alt"></i></a>
     </h3>
-    <p class="muted"><%= repo.description %></p>
+    <p class="description muted"><%= repo.description %></p>
   </td>
-  <td class="muted"><h6 class="line-height6"><%= repo.language %></h6></td>
+  <td class="muted"><h6 class="line-height6"><%= repo.watching.language %></h6></td>
   <td class="line-height6"><nobr>
-    <%= link_to "https://github.com/#{repo.owner}/#{repo}/network", target: '_blank' do %>
+    <%= link_to "https://github.com/#{repo.watching.owner}/#{repo.watching}/network", target: '_blank' do %>
       <span class="badge">
         <i class="icon-random icon-white"></i>
-        <%= repo.forks %>
+        <%= repo.watching.forks %>
       </span>
     <% end -%>
   </nobr></td>

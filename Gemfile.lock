@@ -40,6 +40,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.7)
     arel (3.0.2)
+    attribute_normalizer (1.1.0)
     builder (3.0.0)
     celluloid (0.10.0)
     coffee-rails (3.2.2)
@@ -252,6 +253,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  attribute_normalizer
   coffee-rails (~> 3.2.1)
   coffeebeans
   debugger

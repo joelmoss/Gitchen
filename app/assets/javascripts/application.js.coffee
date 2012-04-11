@@ -21,6 +21,66 @@ $ ->
   $("a[rel=tooltip]").tooltip()
 
 
+$ ->
+  $('a.edit-description').on 'click', ->
+    btn   = $(this)
+    repo  = btn.parents 'tr.repo'
+    ele   = repo.find 'p.description'
+
+    if btn.hasClass 'btn-mini'
+      ele.hide()
+
+      cancel = btn.clone()
+      cancel.text 'cancel'
+      cancel.addClass 'cancel-edit'
+      cancel.removeClass 'btn-danger'
+      cancel.insertAfter btn
+
+      btn.removeClass 'btn-mini'
+      btn.text 'save'
+
+      ele.after '<form><textarea name="watch[description]"></textarea></form>'
+      repo.find('textarea').val ele.text()
+
+    else
+      form = repo.find 'form'
+
+      $.ajax
+        type: 'PUT'
+        data: form.serializeArray()
+        url: "repos/#{repo.attr('id').replace('repo-', '')}"
+
+      ele.text(repo.find('textarea').val()).show()
+      repo.find('.cancel-edit').remove()
+      form.remove()
+
+      btn.addClass 'btn-mini'
+      btn.text 'edit...'
+
+
+  $('.repo').on 'click', '.cancel-edit', ->
+    btn   = $(this)
+    repo  = btn.parents 'tr.repo'
+    ele   = repo.find 'p.description'
+    edit  = repo.find '.edit-description'
+    form  = repo.find 'form'
+
+    ele.show()
+    btn.remove()
+    form.remove()
+
+    edit.addClass 'btn-mini'
+    edit.text 'edit...'
+    edit.hide()
+
+
+  $('tr.repo').on
+    mouseenter: ->
+      $(this).find('a.edit-description').css 'display', 'block'
+    mouseleave: ->
+      $(this).find('a.edit-description').hide()
+
+
 # Fetch repos on loading page
 # -----------------------------------------------------------------------------
 

@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @repos = current_user.watchings.where('users.username' => params[:id]).page(params[:page]).
-                                    includes(:owner).order(params[:order] ||= 'repos.watchers_count DESC')
+    @repos = current_user.watches.where('users.username' => params[:id]).page(params[:page]).
+                                  includes(watching: :owner).order(params[:order] ||= 'repos.watchers_count DESC')
   end
 
 end

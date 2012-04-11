@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120407120722) do
+ActiveRecord::Schema.define(:version => 20120411191040) do
 
   create_table "repos", :force => true do |t|
     t.string   "name"
@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(:version => 20120407120722) do
   create_table "watches", :force => true do |t|
     t.integer  "user_id"
     t.integer  "repo_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "deleting",   :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "deleting",    :default => false
+    t.string   "description"
   end
 
 end

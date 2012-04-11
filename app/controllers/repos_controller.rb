@@ -11,7 +11,7 @@ class ReposController < ApplicationController
   def index
     respond_to do |wants|
       wants.html do
-        @repos = current_user.watchings.includes(:owner).page(params[:page]).order(params[:order] ||= 'repos.watchers_count DESC')
+        @repos = current_user.watches.includes(watching: :owner).page(params[:page]).order(params[:order] ||= 'repos.watchers_count DESC')
       end
       wants.js do
         render json: { success: current_user.watchings.count > 0 }
@@ -25,6 +25,14 @@ class ReposController < ApplicationController
 
   def unwatch
     current_user.watches.unwatch @repo
+  end
+
+  def update
+    @repo = current_user.watches.where(repo_id: params[:id]).first
+    raise ActiveRecord::RecordNotFound if @repo.blank?
+
+    @repo.update_attributes params[:watch]
+    render nothing: true, layout: false
   end
 
 

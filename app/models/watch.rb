@@ -8,6 +8,7 @@ class Watch < ActiveRecord::Base
     indexes :name, as: 'watching.name.gsub(/_/, " ")'
     indexes :original_name, as: 'watching.name', index: 'not_analyzed'
     indexes :description, as: 'watching.description'
+    indexes :watch_description, as: 'description'
     indexes :language, as: 'watching.language'
     indexes :private, as: 'watching.private', index: 'not_analyzed'
     indexes :watchers_count, as: 'watching.watchers_count', index: 'not_analyzed', type: 'integer'
@@ -23,6 +24,14 @@ class Watch < ActiveRecord::Base
 
   default_scope where(deleting: false)
 
+  normalize_attributes :description
+
+  attr_accessible :description
+
+
+  def description
+    read_attribute(:description) || watching.description
+  end
 
   # Unwatch a repo (duh!).
   def unwatch

@@ -11,7 +11,7 @@ class LanguagesController < ApplicationController
   def show
     language = params[:id] == 'other' ? nil : params[:id]
     params[:order] ||= 'repos.watchers_count DESC'
-    @repos = current_user.watchings.where(language: language).page(params[:page]).includes(:owner).order(params[:order])
+    @repos = current_user.watches.where('repos.language' => language).page(params[:page]).includes(watching: :owner).order(params[:order])
   end
 
 end

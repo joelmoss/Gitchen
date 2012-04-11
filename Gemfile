@@ -14,6 +14,7 @@ gem 'sinatra'
 gem 'coffeebeans'
 gem 'exceptional'
 gem 'scoped_search'
+gem 'attribute_normalizer'
 
 # Gems used only for assets and not required
 # in production environments by default.

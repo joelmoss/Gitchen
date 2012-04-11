@@ -1,6 +1,11 @@
 /* Utilities
 /* ---------------------------------------------------------------------------- */
 
+td.center {
+  text-align: center;
+}
+
+
 .table th.right, .table td.right, .right {
   text-align: right;
 }
@@ -35,5 +40,24 @@ tr.unwatched {
   h3, h3 a, h6, p {
     color: #DDD;
     text-decoration: line-through;
+  }
+}
+
+tr.repo {
+  .edit-description {
+    display: none;
+    margin-top: 4px;
+  }
+
+  form {
+    margin: 0;
+    textarea {
+      height: 50px;
+      width: 96%;
+    }
+  }
+
+  .cancel-edit {
+    margin-top: 3px;
   }
 }
