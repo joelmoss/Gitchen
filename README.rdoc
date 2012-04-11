@@ -28,9 +28,9 @@ Github repos.
     - issues
     - size
 
-  - Additional features: (coming soon)
-    - Add tags
-    - Add notes or modify (overwrite) description
+  - Additional features:
+    - Add tags (coming soon)
+    - Modify (overwrite) description
 
 
 === Popularity/Rating/Score (TBD)
