@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
   def index
     params[:per_page] ||= 20
     params[:page] ||= 1
-    order = params[:order] ||= 'watchers_count DESC'
+    order = params[:order]
     query = params[:q]
 
     search = Tire::Search::Search.new(GITCHEN_INDEX_NAME, :type => :watch)
@@ -17,7 +17,7 @@ class SearchesController < ApplicationController
     search.sort do
       field_name, direction = order.split(' ')
       by field_name.to_sym, direction.downcase
-    end
+    end if order
 
     @repos = search.results
   end
