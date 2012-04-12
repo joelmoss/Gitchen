@@ -26,8 +26,6 @@ class Watch < ActiveRecord::Base
 
   normalize_attributes :description
 
-  attr_accessible :description
-
 
   def description
     read_attribute(:description) || watching.description
